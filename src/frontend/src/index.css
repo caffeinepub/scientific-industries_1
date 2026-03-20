@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* Dark theme - near-black background */
+    --background: 0.1 0.015 240;
+    --foreground: 0.92 0.01 220;
+    --card: 0.16 0.015 240;
+    --card-foreground: 0.92 0.01 220;
+    --popover: 0.16 0.015 240;
+    --popover-foreground: 0.92 0.01 220;
+    /* Electric blue primary */
+    --primary: 0.6 0.22 260;
+    --primary-foreground: 0.98 0 0;
+    --secondary: 0.2 0.015 240;
+    --secondary-foreground: 0.92 0.01 220;
+    --muted: 0.18 0.012 240;
+    --muted-foreground: 0.63 0.015 220;
+    --accent: 0.22 0.018 240;
+    --accent-foreground: 0.92 0.01 220;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.92 0.01 220 / 8%;
+    --input: 0.92 0.01 220 / 12%;
+    --ring: 0.6 0.22 260;
+    --chart-1: 0.6 0.22 260;
+    --chart-2: 0.72 0.18 220;
+    --chart-3: 0.65 0.2 280;
+    --chart-4: 0.75 0.15 200;
+    --chart-5: 0.55 0.25 240;
+    --sidebar: 0.13 0.015 240;
+    --sidebar-foreground: 0.92 0.01 220;
+    --sidebar-primary: 0.6 0.22 260;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.2 0.015 240;
+    --sidebar-accent-foreground: 0.92 0.01 220;
+    --sidebar-border: 0.92 0.01 220 / 8%;
+    --sidebar-ring: 0.6 0.22 260;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    background: linear-gradient(
+      135deg,
+      oklch(0.1 0.015 240) 0%,
+      oklch(0.13 0.018 250) 100%
+    );
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(28, 38, 52, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0
+      rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-card-hover {
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s
+      ease;
+  }
+
+  .glass-card-hover:hover {
+    box-shadow: 0 16px 48px rgba(45, 125, 255, 0.2), inset 0 1px 0
+      rgba(255, 255, 255, 0.1);
+    border-color: rgba(45, 125, 255, 0.3);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #4d9fff 0%, #1fb6ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .blue-glow {
+    box-shadow: 0 0 30px rgba(45, 125, 255, 0.35), 0 4px 16px
+      rgba(45, 125, 255, 0.2);
+  }
+
+  .blue-glow:hover {
+    box-shadow: 0 0 50px rgba(45, 125, 255, 0.5), 0 6px 24px
+      rgba(45, 125, 255, 0.3);
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .orbit-ring {
+    border: 1px solid rgba(45, 125, 255, 0.15);
+    border-radius: 50%;
+    position: absolute;
+  }
+}
+
+@keyframes float1 {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  66% {
+    transform: translateY(-10px) rotate(-3deg);
+  }
+}
+
+@keyframes float2 {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-30px) scale(1.05);
+  }
+}
+
+@keyframes float3 {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-15px) rotate(8deg) scale(1.02);
+  }
+  75% {
+    transform: translateY(-25px) rotate(-5deg) scale(0.98);
+  }
+}
+
+@keyframes orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Hover helpers to avoid inline onMouseEnter/Leave assignment */
+.nav-link:hover {
+  color: #e8edf3 !important;
+}
+.footer-link:hover {
+  color: #aab4c0 !important;
+}
